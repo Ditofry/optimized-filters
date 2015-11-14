@@ -140,43 +140,43 @@ applyFilter(struct Filter *filter, cs1300bmp *input, cs1300bmp *output)
       // We know that the inner loops go from 0 to 3.
       // Looking at color as an XYZ 3d matrix, we itterate j, then i
       // i = 0
-      tRed += input->color[0][0][COLOR_RED] * get00;
-      tGreen += input->color[0][0][COLOR_GREEN] * get00;
-      tBlue += input->color[0][0][COLOR_BLUE] * get00;
+      tRed += input->color[row - 1][col - 1][COLOR_RED] * get00;
+      tGreen += input->color[row - 1][col - 1][COLOR_GREEN] * get00;
+      tBlue += input->color[row - 1][col - 1][COLOR_BLUE] * get00;
 
-      tRed += input->color[0][1][COLOR_RED] * get01;
-      tGreen += input->color[0][1][COLOR_GREEN] * get01;
-      tBlue += input->color[0][1][COLOR_BLUE] * get01;
+      tRed += input->color[row - 1][col][COLOR_RED] * get01;
+      tGreen += input->color[row - 1][col][COLOR_GREEN] * get01;
+      tBlue += input->color[row - 1][col][COLOR_BLUE] * get01;
 
-      tRed += input->color[0][2][COLOR_RED] * get02;
-      tGreen += input->color[0][2][COLOR_GREEN] * get02;
-      tBlue += input->color[0][2][COLOR_BLUE] * get02;
+      tRed += input->color[row - 1][col + 1][COLOR_RED] * get02;
+      tGreen += input->color[row - 1][col + 1][COLOR_GREEN] * get02;
+      tBlue += input->color[row - 1][col + 1][COLOR_BLUE] * get02;
 
       // i = 1
-      tRed += input->color[1][0][COLOR_RED] * get10;
-      tGreen += input->color[1][0][COLOR_GREEN] * get10;
-      tBlue += input->color[1][0][COLOR_BLUE] * get10;
+      tRed += input->color[row][col - 1][COLOR_RED] * get10;
+      tGreen += input->color[row][col - 1][COLOR_GREEN] * get10;
+      tBlue += input->color[row][col - 1][COLOR_BLUE] * get10;
 
-      tRed += input->color[1][1][COLOR_RED] * get11;
-      tGreen += input->color[1][1][COLOR_GREEN] * get11;
-      tBlue += input->color[1][1][COLOR_BLUE] * get11;
+      tRed += input->color[row][col][COLOR_RED] * get11;
+      tGreen += input->color[row][col][COLOR_GREEN] * get11;
+      tBlue += input->color[row][col][COLOR_BLUE] * get11;
 
-      tRed += input->color[1][2][COLOR_RED] * get12;
-      tGreen += input->color[1][2][COLOR_GREEN] * get12;
-      tBlue += input->color[1][2][COLOR_BLUE] * get12;
+      tRed += input->color[row][col + 1][COLOR_RED] * get12;
+      tGreen += input->color[row][col + 1][COLOR_GREEN] * get12;
+      tBlue += input->color[row][col + 1][COLOR_BLUE] * get12;
 
       // i = 2
-      tRed += input->color[2][0][COLOR_RED] * get20;
-      tGreen += input->color[2][0][COLOR_GREEN] * get20;
-      tBlue += input->color[2][0][COLOR_BLUE] * get20;
+      tRed += input->color[row + 1][col - 1][COLOR_RED] * get20;
+      tGreen += input->color[row + 1][col - 1][COLOR_GREEN] * get20;
+      tBlue += input->color[row + 1][col - 1][COLOR_BLUE] * get20;
 
-      tRed += input->color[2][1][COLOR_RED] * get21;
-      tGreen += input->color[2][1][COLOR_GREEN] * get21;
-      tBlue += input->color[2][1][COLOR_BLUE] * get21;
+      tRed += input->color[row + 1][col][COLOR_RED] * get21;
+      tGreen += input->color[row + 1][col][COLOR_GREEN] * get21;
+      tBlue += input->color[row + 1][col][COLOR_BLUE] * get21;
 
-      tRed += input->color[2][2][COLOR_RED] * get22;
-      tGreen += input->color[2][2][COLOR_GREEN] * get22;
-      tBlue += input->color[2][2][COLOR_BLUE] * get22;
+      tRed += input->color[row + 1][col + 1][COLOR_RED] * get22;
+      tGreen += input->color[row + 1][col + 1][COLOR_GREEN] * get22;
+      tBlue += input->color[row + 1][col + 1][COLOR_BLUE] * get22;
       /*** END LOOP UNROLL ***/
 
       tRed /= divisor;
